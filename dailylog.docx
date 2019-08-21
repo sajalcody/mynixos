@@ -15,3 +15,10 @@ sorted by command
 export NIXPKGS_ALLOW_UNFREE=1
 
 (source: https://nixos.org/nixpkgs/manual/#sec-allow-unfree ) 
+
+installed cabal by 
+nix-env -i cabal-install
+
+installed ghc by
+
+nix-env -i ghc
