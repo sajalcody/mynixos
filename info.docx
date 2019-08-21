@@ -1,0 +1,4 @@
+OS: NixOS
+
+Package Manager: Nixpkgs
+Manual: https://nixos.org/nixpkgs/manual/
