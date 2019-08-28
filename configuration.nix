@@ -56,7 +56,37 @@
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
   # List services that you want to enable:
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions = {
+      enable = true;
+    };
+    interactiveShellInit = ''
+    source ${pkgs.fetchurl {url = "https://github.com/rupa/z/raw/2ebe419ae18316c5597dd5fb84b5d8595ff1dde9/z.sh"; sha256 = "0ywpgk3ksjq7g30bqbhl9znz3jh6jfg8lxnbdbaiipzgsy41vi10";}}
+    export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh
+    export ZSH_THEME="agnoster"
+    plugins=(git)
+    source $ZSH/oh-my-zsh.sh '';
+    # promptInit = "";
+    promptInit = "source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme";
+    syntaxHighlighting.enable = true;
+  };
 
+  programs.adb.enable = true;
+  
+  fonts = {
+    enableCoreFonts = true;
+    enableFontDir = true;
+    fonts = with pkgs; [
+      corefonts		  # Microsoft free fonts
+      fira	      	  # Monospace
+      inconsolata     	  # Monospace
+      powerline-fonts
+      ubuntu_font_family
+      unifont		  # International languages
+    ];
+  };
   # Enable the OpenSSH daemon.
    services.openssh.enable = true;
 
@@ -90,6 +120,7 @@
    users.users.sajal = {
      isNormalUser = true;
      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+     shell = pkgs.zsh;
    };
 
   # This value determines the NixOS release with which your system is to be
