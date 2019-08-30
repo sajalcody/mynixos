@@ -32,3 +32,51 @@ nix-env -iA nixos.jq
 28.08.19
 
 installed tmux from nixos pkgs
+
+installed many packages from nixos pkgs which can be viewed by the command
+nix-env -q
+
+30.08.2019
+
+installed virtualenv from nixos pkgs
+
+pkgs by this date
+apt-1.4.6
+cabal-install-2.4.1.0
+cabal2nix-2.14.2
+ffmpeg-3.4.6
+frei0r-plugins-1.6.1
+ghc-8.6.4
+google-chrome-76.0.3809.100
+htop-2.2.0
+jq-1.6
+kdenlive-18.12.3
+python2.7-pip-19.0.3
+python2.7-virtualenv-16.4.1
+tmux-2.8
+unzip-6.0
+vlc-3.0.8
+xarchive-0.2.8-6
+
+
+###Godel SetUp
+
+-created a virtualenv for godel-sessionizer by
+    virtualenv /home/sajal/Desktop/godel-sessionizer
+
+-activate the virtualenv by
+    source bin/activate
+
+-installed all the dependencies written in requirements.txt by
+
+    pip install -r requirements.txt
+
+-now create spark_run_local.py by
+
+    bash ./scripts/session.sh local
+
+- to run python code using spark_run_local on a file which contain rawlogs and write json output in a file
+python spark_run_local.py --runtime local --filename <filename> 
+
+for more info visit readme of godel-sessioniser repo on bitbucket 
+
