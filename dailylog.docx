@@ -80,3 +80,14 @@ python spark_run_local.py --runtime local --filename <filename>
 
 for more info visit readme of godel-sessioniser repo on bitbucket 
 
+03.09.2019
+
+while installing adobe-reader from nixpkgs, it prompted to set allowunfree tag to true inside ~/.config/nixpkgs/config.nix
+
+But there was no directory nixpkgs
+
+So created nixpkgs folder and a file config.nix with the contents
+
+ { allowUnfree = true; }
+
+
