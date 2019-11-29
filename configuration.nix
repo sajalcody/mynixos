@@ -31,7 +31,7 @@
 
   # Set your time zone.
    time.timeZone = "Asia/Kolkata";
-  
+   networking.firewall.allowedTCPPortRanges = [ { from = 5000; to = 9000;} ]; 
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -74,6 +74,7 @@
   };
 
   programs.adb.enable = true;
+  virtualisation.docker.enable = true;
   
   fonts = {
     enableCoreFonts = true;
@@ -89,7 +90,11 @@
   };
   # Enable the OpenSSH daemon.
    services.openssh.enable = true;
-
+  # Enable avahi
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
+  services.avahi.publish.enable = true;
+  services.avahi.publish.addresses = true;
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -119,8 +124,12 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.sajal = {
      isNormalUser = true;
-     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "docker" "wheel" ]; # Enable ‘sudo’ for the user.
      shell = pkgs.zsh;
+   };
+
+   users.users.juspay = {
+     isNormalUser = true;
    };
 
   # This value determines the NixOS release with which your system is to be
